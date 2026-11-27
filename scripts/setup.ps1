@@ -77,5 +77,5 @@ if ($Prod) {
     Write-Host "Start server:  .venv\Scripts\python serve.py   (or deploy\windows\install-service.ps1)"
 } else {
     Write-Host "Activate venv: .venv\Scripts\Activate.ps1"
-    Write-Host "Run dev:       flask run     (and in a second terminal: npm run dev)"
+    Write-Host "Run dev:       flask run     (Tailwind watcher starts automatically)"
 }

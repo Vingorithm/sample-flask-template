@@ -88,6 +88,8 @@ class DevelopmentConfig(Config):
         "DATABASE_URL", f"sqlite:///{(BASE_DIR / 'instance' / 'dev.db').as_posix()}"
     )
     TEMPLATES_AUTO_RELOAD = True
+    # Start the Tailwind watcher together with `flask run` (app/dev_assets.py).
+    TAILWIND_WATCH = env_bool("TAILWIND_WATCH", True)
 
 
 class TestingConfig(Config):

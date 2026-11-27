@@ -13,6 +13,7 @@ from flask import Flask
 
 from .cli import register_cli
 from .config import get_config
+from .dev_assets import maybe_start_tailwind_watcher
 from .errors import register_error_handlers
 from .extensions import csrf, db, migrate
 from .logging_setup import configure_logging
@@ -38,8 +39,7 @@ def create_app(config_name: str | None = None) -> Flask:
     register_security_headers(app)
     register_template_helpers(app)
     register_cli(app)
-
-    app.logger.debug("App created (env=%s)", app.config["ENV_NAME"])
+    maybe_start_tailwind_watcher(app)
     return app
 
 

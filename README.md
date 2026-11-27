@@ -74,8 +74,7 @@ Development memakai **SQLite**, production memakai **MySQL 5.6**.
 ```powershell
 .\scripts\setup.ps1
 .\.venv\Scripts\Activate.ps1
-flask run                 # http://127.0.0.1:5000
-npm run dev               # terminal kedua: Tailwind watch
+flask run                 # http://127.0.0.1:5000 — Tailwind watcher ikut jalan otomatis
 ```
 
 **Linux/macOS:**
@@ -84,8 +83,9 @@ npm run dev               # terminal kedua: Tailwind watch
 ./scripts/setup.sh
 source .venv/bin/activate
 flask run
-npm run dev
 ```
+
+Di mode development, `flask run` otomatis menjalankan Tailwind watcher ([app/dev_assets.py](app/dev_assets.py)), sehingga CSS ter-rebuild setiap kali template diubah dan watcher ikut berhenti saat server dihentikan. Kalau ingin menjalankan Tailwind sendiri, set `TAILWIND_WATCH=false` di `.env` lalu pakai `npm run dev` di terminal terpisah.
 
 Script setup akan: membuat `.venv` dengan Python 3.12, install dependensi, membuat `.env` dengan `SECRET_KEY` acak, build CSS, lalu menjalankan `flask db upgrade`.
 
@@ -109,8 +109,8 @@ flask db upgrade
 
 | Tugas | Perintah |
 |---|---|
-| Jalankan server dev | `flask run` |
-| Tailwind watch / build | `npm run dev` / `npm run build` |
+| Jalankan server dev (+ Tailwind watch) | `flask run` |
+| Build CSS produksi | `npm run build` |
 | Buat migrasi setelah ubah model | `flask db migrate -m "keterangan"` |
 | Terapkan migrasi | `flask db upgrade` |
 | Batalkan migrasi terakhir | `flask db downgrade` |

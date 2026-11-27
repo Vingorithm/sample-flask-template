@@ -62,5 +62,5 @@ if [[ $PROD -eq 1 ]]; then
   echo "Start server: .venv/bin/python serve.py   (or install deploy/linux/flaskapp.service)"
 else
   echo "Activate venv: source .venv/bin/activate"
-  echo "Run dev:       flask run   (and in a second terminal: npm run dev)"
+  echo "Run dev:       flask run   (Tailwind watcher starts automatically)"
 fi
