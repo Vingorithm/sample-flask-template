@@ -1,0 +1,7 @@
+# Runtime dependencies shared by every environment.
+Flask>=3.1,<4
+Flask-SQLAlchemy>=3.1,<4
+Flask-Migrate>=4.1,<5
+Flask-WTF>=1.2,<2
+SQLAlchemy>=2.0,<2.1
+python-dotenv>=1.1,<2

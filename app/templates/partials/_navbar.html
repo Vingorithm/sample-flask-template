@@ -1,0 +1,18 @@
+{% set nav_items = [
+  ("main.index", "Beranda"),
+  ("main.about", "Tentang"),
+] %}
+<header class="border-b border-slate-200 bg-white">
+  <nav class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+    <a href="{{ url_for('main.index') }}" class="font-semibold text-slate-900">{{ app_name }}</a>
+    <ul class="flex gap-1 text-sm">
+      {% for endpoint, label in nav_items %}
+        <li>
+          <a href="{{ url_for(endpoint) }}"
+             class="nav-link {{ 'nav-link-active' if request.endpoint == endpoint }}"
+             {% if request.endpoint == endpoint %}aria-current="page"{% endif %}>{{ label }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+  </nav>
+</header>

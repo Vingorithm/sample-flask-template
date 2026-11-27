@@ -1,0 +1,5 @@
+-r base.txt
+
+waitress>=3.0,<4
+# Pure-Python MySQL driver; works with MySQL 5.6.
+PyMySQL>=1.1,<2

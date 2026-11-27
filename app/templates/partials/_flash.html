@@ -1,0 +1,12 @@
+{# Use flash("pesan", "success" | "error" | "warning" | "info") in views. #}
+{% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="mb-6 space-y-2" role="status">
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category if category in ['success', 'error', 'warning'] else 'info' }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}

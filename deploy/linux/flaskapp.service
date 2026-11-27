@@ -1,0 +1,27 @@
+# systemd unit for Waitress. Install:
+#   sudo cp deploy/linux/flaskapp.service /etc/systemd/system/
+#   sudo systemctl daemon-reload && sudo systemctl enable --now flaskapp
+# Logs: journalctl -u flaskapp -f   (and logs/app.log)
+
+[Unit]
+Description=Flask app (Waitress)
+After=network.target mysql.service
+
+[Service]
+Type=simple
+User=www-data
+Group=www-data
+WorkingDirectory=/srv/flaskapp
+Environment=APP_ENV=production
+ExecStart=/srv/flaskapp/.venv/bin/python serve.py
+Restart=on-failure
+RestartSec=5
+
+# Hardening
+NoNewPrivileges=true
+PrivateTmp=true
+ProtectSystem=full
+ReadWritePaths=/srv/flaskapp/logs /srv/flaskapp/instance
+
+[Install]
+WantedBy=multi-user.target

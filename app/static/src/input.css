@@ -1,0 +1,41 @@
+/* Tailwind CSS v4 entry point. Build: `npm run build` (output: app/static/css/app.css) */
+@import "tailwindcss";
+
+/* Files Tailwind scans for class names. */
+@source "../../templates";
+@source "../js";
+
+/* Design tokens - customise per project. */
+@theme {
+  --font-sans: ui-sans-serif, system-ui, "Segoe UI", Roboto, sans-serif;
+  --color-brand-50: #eff6ff;
+  --color-brand-600: #2563eb;
+  --color-brand-700: #1d4ed8;
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand-600;
+  }
+  .btn-primary {
+    @apply bg-brand-600 text-white hover:bg-brand-700;
+  }
+  .btn-secondary {
+    @apply border border-slate-300 bg-white text-slate-700 hover:bg-slate-50;
+  }
+
+  .nav-link {
+    @apply rounded-md px-3 py-1.5 text-slate-600 hover:bg-slate-100 hover:text-slate-900;
+  }
+  .nav-link-active {
+    @apply bg-slate-100 text-slate-900;
+  }
+
+  .alert {
+    @apply rounded-md border px-4 py-3 text-sm;
+  }
+  .alert-success { @apply border-green-200 bg-green-50 text-green-800; }
+  .alert-error   { @apply border-red-200 bg-red-50 text-red-800; }
+  .alert-warning { @apply border-amber-200 bg-amber-50 text-amber-800; }
+  .alert-info    { @apply border-brand-50 bg-brand-50 text-brand-700; }
+}

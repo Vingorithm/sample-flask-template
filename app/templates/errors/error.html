@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% set messages = {
+  400: "Permintaan tidak valid.",
+  403: "Anda tidak punya akses ke halaman ini.",
+  404: "Halaman yang Anda cari tidak ditemukan.",
+  405: "Metode tidak diizinkan untuk alamat ini.",
+  413: "File yang diunggah terlalu besar.",
+  500: "Terjadi kesalahan di server. Silakan coba lagi nanti.",
+} %}
+
+{% block title %}{{ code }} · {{ app_name }}{% endblock %}
+
+{% block content %}
+  <section class="max-w-xl py-10">
+    <p class="text-sm font-medium text-slate-500">Error {{ code }}</p>
+    <h1 class="mt-1 text-2xl font-semibold text-slate-900">{{ messages.get(code, error.name) }}</h1>
+    <a href="{{ url_for('main.index') }}" class="btn btn-primary mt-6">Kembali ke beranda</a>
+  </section>
+{% endblock %}
